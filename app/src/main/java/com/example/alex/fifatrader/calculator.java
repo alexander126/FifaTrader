@@ -32,12 +32,14 @@ public class calculator extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                double price = Double.parseDouble(buyingPrice.getText().toString());
+                double selling = Double.parseDouble(sellingPrice.getText().toString());
+                double temp = selling *5/100;
+                double profit = (selling - temp) - price;
+                String profitstring = Double.toString(profit);
+                finalProfit.setText(profitstring);
 
-                int bPrice = Integer.valueOf(buyPrice);
-                int sPrice = Integer.valueOf(sellPrice);
-                int profit = sPrice - bPrice - (sPrice*5/100);
-                finalProfit.setText(profit);
-                int asd=0;
+
             }
         });
 
