@@ -1,8 +1,15 @@
 package com.example.alex.fifatrader;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.view.ContextThemeWrapper;
+import android.text.InputType;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,9 +19,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import static com.example.alex.fifatrader.R.layout.activity_calculator;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private Context cnt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +35,44 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        cnt=this;
+        int theme = android.R.style.Theme_Holo_Light_Dialog;
+        final EditText input = new EditText(this);
+        final SharedPreferences.Editor editor = getSharedPreferences("name", MODE_PRIVATE).edit();
+        SharedPreferences prefs = getSharedPreferences("name", MODE_PRIVATE);
+        if(isFirstTime()){
+            ContextThemeWrapper wrapper = new ContextThemeWrapper(cnt,theme);
+            AlertDialog.Builder builder = new AlertDialog.Builder(wrapper);
+            builder.setTitle("Enter your current money");
+
+        //set up the input
+            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            builder.setView(input);
+
+            //set up the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    editor.putString("mymoney", input.getText().toString());
+                    editor.commit();
+                }
+            });
+            builder.show();
+        }
+        Button bn1 = (Button) findViewById(R.id.next);
+        bn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent calc_activity = new Intent(MainActivity.this, calculator.class);
+                startActivity(calc_activity);
+            }
+        });
+
+        //test for sharedprefs
+        String yourmoney = prefs.getString("mymoney", "");
+        TextView txt1 = (TextView)findViewById(R.id.txt1);
+        txt1.setText("You have " + yourmoney);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +92,17 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
-
+    private boolean isFirstTime() {
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.apply();
+        }
+        return !ranBefore;
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
