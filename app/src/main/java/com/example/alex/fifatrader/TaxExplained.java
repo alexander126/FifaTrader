@@ -19,34 +19,12 @@ public class TaxExplained extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tax_explained);
         this.setFinishOnTouchOutside(true);
-        BufferedReader reader = null;
 
-        try {
-            reader = new BufferedReader(
-                    new InputStreamReader(getAssets().open("info.txt")));
-
-            // do reading, usually loop until end of file reading
-            String mLine;
-            while ((mLine = reader.readLine()) != null) {
-                text.append(mLine);
-                text.append('\n');
-            }
-        } catch (IOException e) {
-            Toast.makeText(getApplicationContext(),"Error reading file!",Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    //log the exception
-                }
-            }
-
-            TextView output= (TextView) findViewById(R.id.info);
-            output.setText((CharSequence) text);
-
-        }
-
+        TextView text = (TextView) findViewById(R.id.info);
+        text.setText("In order to control the rapid rate at which some huge Ultimate Team traders/coin sellers seem to accumulate coins, EA has implemented a tax structure in FIFA 13 Ultimate Team.\n" +
+                " \n" +
+                "Some players suspect that it's just another way to stimulate more pack sales. 5% isn't a lot,You probably won't really even notice the taxes, unless you are a coin seller yourself.But it is important to be aware of Ultimate Team taxes for when you are involved in more significant trading numbers.\n" +
+                " \n" +
+                "EA takes 5% for any player-to-player trade. This includes cards of any kind, just anything you're selling or buying on the trade market. The taxes are deducted from the final sale price that is given to the seller. Theoretically, the seller gets taxed.");
     }
 }
