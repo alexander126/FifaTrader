@@ -48,8 +48,7 @@
         android:layout_above="@+id/linear1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/finalProfit"
-        android:src="@drawable/fifacoins"/>
+        android:layout_alignLeft="@id/finalProfit"/>
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="wrap_content"

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,8 +36,6 @@ public class calculator extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
                 if(buyingPrice.length()==0 || sellingPrice.length()==0){
                     Toast.makeText(calculator.this, "This place can not be empty", Toast.LENGTH_SHORT).show();
                 }
@@ -47,6 +46,8 @@ public class calculator extends AppCompatActivity {
                     double profit = (selling - temp) - price;
                     String profitstring = Double.toString(profit);
                     finalProfit.setText(profitstring);
+                    ImageView coins = (ImageView) findViewById(R.id.coins);
+                    coins.setImageResource(R.drawable.fifacoins);
                 }
 
 
