@@ -39,8 +39,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/sellingPrice"
         android:layout_centerHorizontal="true"/>
-    <Button
+
+    <ImageView
+        android:id="@+id/coins"
+        android:layout_below="@+id/calculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fifacoins"/>
+    <ImageButton
         android:id="@+id/calculate"
+        android:src="@drawable/profit_button"
+        android:background="@null"
         android:text="Calculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,8 +57,10 @@
         android:layout_centerHorizontal="true"
         />
 
-    <Button
+    <ImageButton
         android:id="@+id/info"
+        android:background="@null"
+        android:src="@drawable/info_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

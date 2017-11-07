@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class calculator extends AppCompatActivity {
@@ -23,8 +24,8 @@ public class calculator extends AppCompatActivity {
         final EditText buyingPrice = (EditText) findViewById(R.id.buyingPrice);
         final EditText sellingPrice = (EditText) findViewById(R.id.sellingPrice);
         final TextView finalProfit = (TextView) findViewById(R.id.finalProfit);
-        Button calculate = (Button) findViewById(R.id.calculate);
-        Button info = (Button) findViewById(R.id.info);
+        ImageButton calculate = (ImageButton) findViewById(R.id.calculate);
+        ImageButton info = (ImageButton) findViewById(R.id.info);
 
        final String buyPrice = buyingPrice.getText().toString();
        final String sellPrice = sellingPrice.getText().toString();
