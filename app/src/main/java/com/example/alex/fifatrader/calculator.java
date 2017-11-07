@@ -24,6 +24,7 @@ public class calculator extends AppCompatActivity {
         final EditText sellingPrice = (EditText) findViewById(R.id.sellingPrice);
         final TextView finalProfit = (TextView) findViewById(R.id.finalProfit);
         Button calculate = (Button) findViewById(R.id.calculate);
+        Button info = (Button) findViewById(R.id.info);
 
        final String buyPrice = buyingPrice.getText().toString();
        final String sellPrice = sellingPrice.getText().toString();
@@ -40,6 +41,13 @@ public class calculator extends AppCompatActivity {
                 finalProfit.setText(profitstring);
 
 
+            }
+        });
+        info.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(calculator.this, TaxExplained.class);
+                startActivity(intent);
             }
         });
 
