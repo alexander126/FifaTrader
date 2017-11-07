@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class calculator extends AppCompatActivity {
 
@@ -34,12 +35,19 @@ public class calculator extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                double price = Double.parseDouble(buyingPrice.getText().toString());
-                double selling = Double.parseDouble(sellingPrice.getText().toString());
-                double temp = selling *5/100;
-                double profit = (selling - temp) - price;
-                String profitstring = Double.toString(profit);
-                finalProfit.setText(profitstring);
+
+
+                if(buyingPrice.length()==0 || sellingPrice.length()==0){
+                    Toast.makeText(calculator.this, "This place can not be empty", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    double price = Double.parseDouble(buyingPrice.getText().toString());
+                    double selling = Double.parseDouble(sellingPrice.getText().toString());
+                    double temp = selling * 5 / 100;
+                    double profit = (selling - temp) - price;
+                    String profitstring = Double.toString(profit);
+                    finalProfit.setText(profitstring);
+                }
 
 
             }
