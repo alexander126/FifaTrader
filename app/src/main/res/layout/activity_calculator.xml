@@ -62,6 +62,7 @@
             android:text="Calculate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxHeight="80dp"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
@@ -73,6 +74,10 @@
             android:src="@drawable/info_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxHeight="80dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
             android:text="Info" />
 
     </LinearLayout>
