@@ -68,6 +68,14 @@ public class MainActivity extends AppCompatActivity
                 startActivity(calc_activity);
             }
         });
+        Button trade1 = (Button) findViewById(R.id.tradeSession);
+        trade1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent trade_session = new Intent(MainActivity.this, TradeSession.class);
+                startActivity(trade_session);
+            }
+        });
 
         //test for sharedprefs
         String yourmoney = prefs.getString("mymoney", "");

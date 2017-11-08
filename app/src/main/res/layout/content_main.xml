@@ -9,14 +9,6 @@
     tools:showIn="@layout/app_bar_main">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <TextView
         android:id="@+id/txt1"
         android:layout_width="match_parent"
         android:layout_height="100px"
@@ -24,10 +16,25 @@
         android:layout_centerVertical="true"
         android:textAlignment="center"/>
     <Button
+        android:id="@+id/tradeSession"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Session"/>
+    <Button
         android:id="@+id/next"
         android:text="Click me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/next2"
+        android:layout_below="@+id/next"
+        android:text="Click me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+
 
 </RelativeLayout>
