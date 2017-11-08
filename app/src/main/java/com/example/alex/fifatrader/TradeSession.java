@@ -20,6 +20,8 @@ public class tradeSession extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trade_session);
         final EditText input = new EditText(this);
+        final EditText bought = new EditText(this);
+        final EditText sold = new EditText(this);
         Button entry =(Button) findViewById(R.id.addEntry);
 
         entry.setOnClickListener(new View.OnClickListener() {
@@ -30,6 +32,11 @@ public class tradeSession extends AppCompatActivity {
 
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 builder.setView(input);
+                //TODO: FIX THESE
+                bought.setInputType(InputType.TYPE_CLASS_NUMBER);
+                builder.setView(bought);
+                sold.setInputType(InputType.TYPE_CLASS_NUMBER);
+                builder.setView(sold);
 
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
