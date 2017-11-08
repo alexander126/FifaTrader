@@ -2,8 +2,9 @@ package com.example.alex.fifatrader;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.content.Intent;
 
-public class TradeSession extends AppCompatActivity {
+public class tradeSession extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

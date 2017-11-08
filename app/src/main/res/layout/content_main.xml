@@ -16,7 +16,7 @@
         android:layout_centerVertical="true"
         android:textAlignment="center"/>
     <Button
-        android:id="@+id/tradeSession"
+        android:id="@+id/trade"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_width="wrap_content"

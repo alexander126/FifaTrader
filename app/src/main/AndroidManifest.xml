@@ -20,10 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".calculator" />
-        <activity android:name=".TaxExplained"
-
-            android:theme="@style/Theme.AppCompat.Dialog">
-        </activity>
+        <activity
+            android:name=".TaxExplained"
+            android:theme="@style/Theme.AppCompat.Dialog"></activity>
+        <activity android:name=".tradeSession"></activity>
     </application>
 
 </manifest>

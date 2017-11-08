@@ -60,19 +60,19 @@ public class MainActivity extends AppCompatActivity
             });
             builder.show();
         }
+        Button text1 = (Button) findViewById(R.id.trade);
         Button bn1 = (Button) findViewById(R.id.next);
         bn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent calc_activity = new Intent(MainActivity.this, calculator.class);
-                startActivity(calc_activity);
+                MainActivity.this.startActivity(calc_activity);
             }
         });
-        Button trade1 = (Button) findViewById(R.id.tradeSession);
-        trade1.setOnClickListener(new View.OnClickListener() {
+        text1.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                Intent trade_session = new Intent(MainActivity.this, TradeSession.class);
+            public void onClick(View v){
+                Intent trade_session = new Intent(MainActivity.this, tradeSession.class);
                 startActivity(trade_session);
             }
         });
