@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class tradeSession extends AppCompatActivity {
@@ -23,6 +24,11 @@ public class tradeSession extends AppCompatActivity {
         final EditText input = new EditText(this);
         final EditText bought = new EditText(this);
         final EditText sold = new EditText(this);
+        final TextView name = (TextView) findViewById(R.id.textName);
+        final TextView boughtPrice = (TextView) findViewById(R.id.textBought);
+        final TextView soldPrice = (TextView) findViewById(R.id.textSold);
+
+
         Button entry =(Button) findViewById(R.id.addEntry);
 
         entry.setOnClickListener(new View.OnClickListener() {
@@ -37,11 +43,11 @@ public class tradeSession extends AppCompatActivity {
                 layout.addView(input);
 
                 bought.setHint("bought");
+
                 layout.addView(bought);
 
                 sold.setHint("sold");
                 layout.addView(sold);
-
                 builder.setView(layout);
 
              //   input.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -56,8 +62,12 @@ public class tradeSession extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         m_Text = input.getText().toString();
+                        name.setText(m_Text);
+                        boughtPrice.setHint(bought.getText().toString());
+                        soldPrice.setText(sold.getText().toString());
 
                         Toast.makeText(tradeSession.this, m_Text, Toast.LENGTH_SHORT).show();
+
                         finish();
                         startActivity(getIntent());
                     }
