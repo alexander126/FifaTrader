@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.view.ContextThemeWrapper;
+import android.telephony.TelephonyManager;
 import android.text.InputType;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -22,6 +23,12 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 
 import static com.example.alex.fifatrader.R.layout.activity_calculator;
 
@@ -36,6 +43,15 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+
+        mAdView.loadAd(adRequest);
+        //Samle AdMob app ID:ca-app-pub-8629737007792498~2503304919
+        //TODO: fix the appearance
+        MobileAds.initialize(this, "ca-app-pub-8629737007792498/5456771314");
         cnt=this;
         int theme = android.R.style.Theme_Holo_Light_Dialog;
         final EditText input = new EditText(this);
