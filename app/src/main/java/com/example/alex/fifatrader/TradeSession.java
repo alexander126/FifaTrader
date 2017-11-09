@@ -68,8 +68,6 @@ public class tradeSession extends AppCompatActivity {
 
                         Toast.makeText(tradeSession.this, m_Text, Toast.LENGTH_SHORT).show();
 
-                        finish();
-                        startActivity(getIntent());
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
