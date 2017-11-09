@@ -9,6 +9,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class tradeSession extends AppCompatActivity {
@@ -27,32 +28,51 @@ public class tradeSession extends AppCompatActivity {
         entry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(tradeSession.this);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(tradeSession.this);
                 builder.setTitle("Title");
+                //LinearLayout
+                LinearLayout layout = new LinearLayout(tradeSession.this);
+                layout.setOrientation(LinearLayout.VERTICAL);
+                input.setHint("name");
+                layout.addView(input);
 
-                input.setInputType(InputType.TYPE_CLASS_TEXT);
-                builder.setView(input);
+                bought.setHint("bought");
+                layout.addView(bought);
+
+                sold.setHint("sold");
+                layout.addView(sold);
+
+                builder.setView(layout);
+
+             //   input.setInputType(InputType.TYPE_CLASS_TEXT);
+             //   builder.setView(input);
                 //TODO: FIX THESE
-                bought.setInputType(InputType.TYPE_CLASS_NUMBER);
-                builder.setView(bought);
-                sold.setInputType(InputType.TYPE_CLASS_NUMBER);
-                builder.setView(sold);
+             //   bought.setInputType(InputType.TYPE_CLASS_NUMBER);
+             ////   builder.setView(bought);
+              //  sold.setInputType(InputType.TYPE_CLASS_NUMBER);
+              //  builder.setView(sold);
 
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         m_Text = input.getText().toString();
+
                         Toast.makeText(tradeSession.this, m_Text, Toast.LENGTH_SHORT).show();
+                        finish();
+                        startActivity(getIntent());
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                        startActivity(getIntent());
                         dialog.cancel();
                     }
                 });
 
                 builder.show();
+
             }
         });
 
