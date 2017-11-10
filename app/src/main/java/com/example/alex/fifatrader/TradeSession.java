@@ -16,6 +16,8 @@ import android.widget.Toast;
 public class tradeSession extends AppCompatActivity {
 
     String m_Text = "";
+    String soldV = "";
+    String boughtV = "";
     //ee
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +64,15 @@ public class tradeSession extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         m_Text = input.getText().toString();
-                        name.setText(m_Text);
-                        boughtPrice.setHint(bought.getText().toString());
-                        soldPrice.setText(sold.getText().toString());
+                        soldV = sold.getText().toString();
+                        boughtV = bought.getText().toString();
+                        double price = Double.parseDouble(bought.getText().toString());
+                        double selling = Double.parseDouble(sold.getText().toString());
+                        double temp = selling * 5 / 100;
+                        double profit = (selling - temp) - price;
+                        String profitstring = Double.toString(profit);
+                        name.setText(profitstring);
 
-                        Toast.makeText(tradeSession.this, m_Text, Toast.LENGTH_SHORT).show();
 
                     }
                 });
