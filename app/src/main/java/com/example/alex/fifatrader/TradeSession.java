@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 public class tradeSession extends AppCompatActivity {
 
+    private static double Profit = 0;
+    private static double Tax = 0;
     String m_Text = "";
     String soldV = "";
     String boughtV = "";
@@ -30,62 +32,16 @@ public class tradeSession extends AppCompatActivity {
         final TextView boughtPrice = (TextView) findViewById(R.id.textBought);
         final TextView soldPrice = (TextView) findViewById(R.id.textSold);
 
-
+        name.setText(getIntent().getStringExtra("nameExtra"));
+        boughtPrice.setText(getIntent().getStringExtra("boughtExtra"));
+        soldPrice.setText(getIntent().getStringExtra("soldExtra"));
+        Button activity = (Button) findViewById(R.id.activity);
         Button entry =(Button) findViewById(R.id.addEntry);
-
-        entry.setOnClickListener(new View.OnClickListener() {
+        activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(tradeSession.this);
-                builder.setTitle("Title");
-                //LinearLayout
-                LinearLayout layout = new LinearLayout(tradeSession.this);
-                layout.setOrientation(LinearLayout.VERTICAL);
-                input.setHint("name");
-                layout.addView(input);
-
-                bought.setHint("bought");
-
-                layout.addView(bought);
-
-                sold.setHint("sold");
-                layout.addView(sold);
-                builder.setView(layout);
-
-             //   input.setInputType(InputType.TYPE_CLASS_TEXT);
-             //   builder.setView(input);
-                //TODO: FIX THESE
-             //   bought.setInputType(InputType.TYPE_CLASS_NUMBER);
-             ////   builder.setView(bought);
-              //  sold.setInputType(InputType.TYPE_CLASS_NUMBER);
-              //  builder.setView(sold);
-
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        m_Text = input.getText().toString();
-                        soldV = sold.getText().toString();
-                        boughtV = bought.getText().toString();
-                        double price = Double.parseDouble(bought.getText().toString());
-                        double selling = Double.parseDouble(sold.getText().toString());
-                        double temp = selling * 5 / 100;
-                        double profit = (selling - temp) - price;
-                        String profitstring = Double.toString(profit);
-                        name.setText(profitstring);
-
-
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                        startActivity(getIntent());
-                        dialog.cancel();
-                    }
-                });
-
-                builder.show();
+                Intent intent = new Intent(tradeSession.this, calculation.class);
+                startActivity(intent);
 
             }
         });

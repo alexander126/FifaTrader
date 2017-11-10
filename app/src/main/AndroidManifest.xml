@@ -22,8 +22,13 @@
         <activity android:name=".calculator" />
         <activity
             android:name=".TaxExplained"
-            android:theme="@style/Theme.AppCompat.Dialog"></activity>
-        <activity android:name=".tradeSession"></activity>
+            android:theme="@style/Theme.AppCompat.Dialog"
+            android:excludeFromRecents="true"/>
+        <activity android:name=".tradeSession" />
+        <activity android:name=".calculation"
+            android:theme="@style/Theme.AppCompat.Dialog"
+            android:excludeFromRecents="true"/>
+
     </application>
 
 </manifest>
