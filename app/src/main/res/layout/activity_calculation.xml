@@ -5,26 +5,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.alex.fifatrader.calculation">
-
-    <EditText
-        android:id="@+id/bought"
-        android:layout_width="wrap_content"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"/>
-
-    <EditText
-        android:id="@+id/sold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"/>
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        android:gravity="center">
     <EditText
         android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight=".5"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"/>
+        android:layout_below="@+id/name"
+        android:layout_marginTop="10dp"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        android:gravity="center">
+    <EditText
+        android:id="@+id/bought"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight=".5"
+        android:layout_below="@+id/bought"
+        android:layout_marginTop="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        android:gravity="center">
+    <EditText
+        android:id="@+id/sold"
+        android:layout_width="0dp"
+        android:layout_weight=".5"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        android:gravity="center">
     <Button
         android:id="@+id/confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/sold"
+        android:text="Confirm"/>
+        </LinearLayout>
+
+</LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

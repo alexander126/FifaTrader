@@ -1,6 +1,7 @@
 package com.example.alex.fifatrader;
 
 import android.content.DialogInterface;
+import android.renderscript.Double2;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,28 +16,26 @@ import android.widget.Toast;
 
 public class tradeSession extends AppCompatActivity {
 
-    private static double Profit = 0;
-    private static double Tax = 0;
-    String m_Text = "";
-    String soldV = "";
-    String boughtV = "";
+
     //ee
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trade_session);
-        final EditText input = new EditText(this);
-        final EditText bought = new EditText(this);
-        final EditText sold = new EditText(this);
-        final TextView name = (TextView) findViewById(R.id.textName);
-        final TextView boughtPrice = (TextView) findViewById(R.id.textBought);
-        final TextView soldPrice = (TextView) findViewById(R.id.textSold);
 
-        name.setText(getIntent().getStringExtra("nameExtra"));
-        boughtPrice.setText(getIntent().getStringExtra("boughtExtra"));
-        soldPrice.setText(getIntent().getStringExtra("soldExtra"));
+        TextView tax = (TextView) findViewById(R.id.tax);
+        TextView profit = (TextView) findViewById(R.id.profit);
+        double totalProfit = 0;
+        double totalTax = 0;
+        String profitEntry = getIntent().getStringExtra("profit");
+        String taxEntry = getIntent().getStringExtra("tax");
         Button activity = (Button) findViewById(R.id.activity);
-        Button entry =(Button) findViewById(R.id.addEntry);
+
+
+        tax.setText(profitEntry);
+        profit.setText(taxEntry);
+
+
         activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

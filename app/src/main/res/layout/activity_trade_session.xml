@@ -5,49 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.alex.fifatrader.tradeSession">
-
-
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/addEntry"
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/profit"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        >
-        <TableRow
-            android:id="@+id/firstRow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/textName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-            <TextView
-                android:id="@+id/textBought"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-
-                />
-            <TextView
-                android:id="@+id/textSold"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                />
-
-        </TableRow>
-
-    </TableLayout>
-    <Button
-        android:id="@+id/addEntry"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tax"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <Button
+        android:layout_below="@+id/tax"
         android:id="@+id/activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"/>
+    </RelativeLayout>
 
 </RelativeLayout>
