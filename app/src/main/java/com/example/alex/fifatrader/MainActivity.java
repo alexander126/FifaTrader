@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.view.ContextThemeWrapper;
-import android.telephony.TelephonyManager;
 import android.text.InputType;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -23,8 +22,6 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
