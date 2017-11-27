@@ -18,7 +18,7 @@ import static android.widget.Toast.LENGTH_LONG;
 
 public class calculation extends Activity {
     double finalProfit = 0;
-
+    double finalTax = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +50,27 @@ public class calculation extends Activity {
                         double temp = selling * 5 / 100;
                         double profit = (selling - temp) - price;
 
-                        finalProfit = Double.parseDouble(prefs.getString("finalProfit",null)) + Double.parseDouble(prefs.getString("profit", null));
+
                         editor.putString("profit", Double.toString(profit));
+                        editor.putString("tax", Double.toString(temp));
+                        editor.commit();
+                        if (prefs.getString("finalTax",null)==null&&prefs.getString("finalProfit",null)==null){
+                            finalTax = finalTax + Double.parseDouble(prefs.getString("tax",null));
+                            finalProfit = finalProfit + Double.parseDouble(prefs.getString("profit", null));
+                        }
+                        else{
+
+                            finalTax = Double.parseDouble(prefs.getString("finalTax",null)) + Double.parseDouble(prefs.getString("tax",null));
+                            finalProfit = Double.parseDouble(prefs.getString("finalProfit",null)) + Double.parseDouble(prefs.getString("profit", null));
+                        }
+                        editor.putString("finalTax", Double.toString(finalTax));
                         editor.putString("finalProfit", Double.toString(finalProfit));
+
                         editor.commit();
 
 
                         String profitstring = prefs.getString("finalProfit", null);
-                        String taxstring = Double.toString(temp);
+                        String taxstring = prefs.getString("finalTax",null);
 
                         Intent intent = new Intent(calculation.this, tradeSession.class);
                         intent.putExtra("profit", profitstring);
