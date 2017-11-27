@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity
         //test for sharedprefs
         String yourmoney = prefs.getString("mymoney", "");
         TextView txt1 = (TextView)findViewById(R.id.txt1);
-        txt1.setText("You have " + yourmoney);
+        txt1.setText("You have " + prefs.getString("mymoney","0"));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

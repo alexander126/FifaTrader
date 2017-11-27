@@ -76,10 +76,7 @@ public class calculation extends Activity {
                         intent.putExtra("profit", profitstring);
                         intent.putExtra("tax", taxstring);
 
-                        String profitCalculation = prefs.getString("finalProfit", null);
                         startActivity(intent);
-                        Toast toast = Toast.makeText(calculation.this, profitCalculation, LENGTH_LONG);
-                        toast.show();
 
                 }
 
