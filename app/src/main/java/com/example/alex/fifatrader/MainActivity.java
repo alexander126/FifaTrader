@@ -32,7 +32,7 @@ import static com.example.alex.fifatrader.R.layout.activity_calculator;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private Context cnt;
-
+    public double END = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity
                     public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent(MainActivity.this,tradeSession.class);
                         startActivity(intent);
+                        editor.putString("finalProfit", Double.toString(END));
+                        editor.putString("finalTax", Double.toString(END));
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
