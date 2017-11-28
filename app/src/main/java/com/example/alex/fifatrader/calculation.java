@@ -17,22 +17,19 @@ import android.widget.Toast;
 public class calculation extends Activity {
     double finalProfit = 0;
     double finalTax = 0;
+    String footballer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_calculation);
-
         final EditText name =(EditText) findViewById(R.id.name);
-
         final EditText buyingPrice = (EditText) findViewById(R.id.bought);
         final EditText sellingPrice = (EditText) findViewById(R.id.sold);
         Button confirm = (Button) findViewById(R.id.confirm);
         final SharedPreferences prefs = getSharedPreferences("name", MODE_PRIVATE);
         final SharedPreferences.Editor editor = getSharedPreferences("name", MODE_PRIVATE).edit();
-
-
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,8 +42,7 @@ public class calculation extends Activity {
                         double selling = Double.parseDouble(sellingPrice.getText().toString());
                         double temp = selling * 5 / 100;
                         double profit = (selling - temp) - price;
-
-
+                        footballer = name.getText().toString();
                         editor.putString("profit", Double.toString(profit));
                         editor.putString("tax", Double.toString(temp));
                         editor.commit();
@@ -75,6 +71,7 @@ public class calculation extends Activity {
                         intent.putExtra("tax", taxstring);
                         intent.putExtra("cprofit", currentprofit);
                         intent.putExtra("ctax", currenttax);
+                        intent.putExtra("fname", footballer);
 
                         startActivity(intent);
 
