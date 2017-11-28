@@ -20,16 +20,16 @@
         android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Session"/>
+        android:text="Resume Session"/>
     <Button
-        android:id="@+id/next"
-        android:text="Click me"
+        android:id="@+id/newtrade"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
+        android:text="Create New Session"/>
     <Button
-        android:id="@+id/next2"
-        android:layout_below="@+id/next"
+        android:id="@+id/next"
         android:text="Click me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

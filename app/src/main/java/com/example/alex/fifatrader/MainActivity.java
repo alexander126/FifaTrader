@@ -39,19 +39,18 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        int theme = android.R.style.Theme_Holo_Light_Dialog;
+        final EditText input = new EditText(this);
+        Button text1 = (Button) findViewById(R.id.newtrade);
+        Button bn1 = (Button) findViewById(R.id.next);
+        TextView txt1 = (TextView)findViewById(R.id.txt1);
+        cnt=this;
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
-
         mAdView.loadAd(adRequest);
-        //Samle AdMob app ID:ca-app-pub-8629737007792498~2503304919
-        //TODO: fix the appearance
         MobileAds.initialize(this, "ca-app-pub-8629737007792498/5456771314");
-        cnt=this;
-        int theme = android.R.style.Theme_Holo_Light_Dialog;
-        final EditText input = new EditText(this);
         final SharedPreferences.Editor editor = getSharedPreferences("name", MODE_PRIVATE).edit();
         SharedPreferences prefs = getSharedPreferences("name", MODE_PRIVATE);
         if(isFirstTime()){
@@ -73,8 +72,7 @@ public class MainActivity extends AppCompatActivity
             });
             builder.show();
         }
-        Button text1 = (Button) findViewById(R.id.trade);
-        Button bn1 = (Button) findViewById(R.id.next);
+
         bn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,14 +83,30 @@ public class MainActivity extends AppCompatActivity
         text1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent trade_session = new Intent(MainActivity.this, tradeSession.class);
-                startActivity(trade_session);
+              final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Create new session");
+                builder.setMessage("Are you sure you want to end this session?" +
+                                    "If you have session running it will be gone!");
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(MainActivity.this,tradeSession.class);
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        builder.setCancelable(true);
+                    }
+                });
+                builder.show();
+                AlertDialog dialog = builder.create();
             }
         });
 
         //test for sharedprefs
         String yourmoney = prefs.getString("mymoney", "");
-        TextView txt1 = (TextView)findViewById(R.id.txt1);
         txt1.setText("You have " + prefs.getString("mymoney","0"));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
