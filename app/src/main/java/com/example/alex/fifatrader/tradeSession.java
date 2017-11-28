@@ -27,10 +27,6 @@ public class tradeSession extends AppCompatActivity {
         final SharedPreferences prefs = getSharedPreferences("name", MODE_PRIVATE);
         TextView tax = (TextView) findViewById(R.id.tax);
         TextView profit = (TextView) findViewById(R.id.profit);
-        double totalProfit = 0;
-        double totalTax = 0;
-        String profitEntry = getIntent().getStringExtra("profit");
-        String taxEntry = getIntent().getStringExtra("tax");
         Button activity = (Button) findViewById(R.id.activity);
         Button endSession = (Button) findViewById(R.id.endSession);
 
@@ -51,14 +47,38 @@ public class tradeSession extends AppCompatActivity {
         endSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(tradeSession.this, "Your final session profit is: " + prefs.getString("finalProfit",null)+ "\n" + "Your final session tax is: " + prefs.getString("finalTax",null) + "\n" + "Your current session has ended",Toast.LENGTH_LONG);
-                toast.show();
-                double end = 0;
-                double newProfit = Double.parseDouble(prefs.getString("mymoney",null))+Double.parseDouble(prefs.getString("finalProfit",null));
-                editor.putString("finalProfit",Double.toString(end));
-                editor.putString("finalTax",Double.toString(end));
-                editor.putString("mymoney", Double.toString(newProfit));
-                editor.commit();
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(tradeSession.this);
+                builder.setMessage("Do you want to end this session?")
+                        .setTitle("End session");
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        builder.setCancelable(true);
+                    }
+                });
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        double end = 0;
+                        double newProfit = Double.parseDouble(prefs.getString("mymoney",null))+Double.parseDouble(prefs.getString("finalProfit",null));
+                        editor.putString("finalProfit",Double.toString(end));
+                        editor.putString("finalTax",Double.toString(end));
+                        editor.putString("mymoney", Double.toString(newProfit));
+                        editor.commit();
+
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        builder.setCancelable(true);
+                    }
+                });
+                builder.show();
+
+
 
             }
         });
