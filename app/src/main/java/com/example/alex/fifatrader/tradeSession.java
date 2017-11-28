@@ -49,9 +49,7 @@ public class tradeSession extends AppCompatActivity {
             public void onClick(View v) {
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(tradeSession.this);
-                builder.setMessage("In the current session you have made " + prefs.getString("finalProfit","0")
-                        + "and you have paid "+ prefs.getString("finalTax","0") + " in tax." +
-                        "Do you want to end this session?")
+                builder.setMessage("Do you want to end this session?")
                         .setTitle("End session");
                 builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
@@ -68,8 +66,8 @@ public class tradeSession extends AppCompatActivity {
                         editor.putString("finalTax",Double.toString(end));
                         editor.putString("mymoney", Double.toString(newProfit));
                         editor.commit();
-                        Intent intent = new Intent(tradeSession.this, MainActivity.class);
-                        startActivity(intent);
+
+                        finish();
                     }
                 });
                 builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
