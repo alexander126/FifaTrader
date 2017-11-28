@@ -11,6 +11,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,8 +28,8 @@ public class tradeSession extends AppCompatActivity {
         final SharedPreferences prefs = getSharedPreferences("name", MODE_PRIVATE);
         TextView tax = (TextView) findViewById(R.id.tax);
         TextView profit = (TextView) findViewById(R.id.profit);
-        Button activity = (Button) findViewById(R.id.activity);
-        Button endSession = (Button) findViewById(R.id.endSession);
+        ImageButton activity = (ImageButton) findViewById(R.id.activity);
+        ImageButton endSession = (ImageButton) findViewById(R.id.endSession);
 
 
         tax.setText("Your session tax is: " + prefs.getString("finalTax","0"));

@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
         final EditText input = new EditText(this);
         Button text1 = (Button) findViewById(R.id.newtrade);
         Button bn1 = (Button) findViewById(R.id.next);
+        Button text2 = (Button) findViewById(R.id.trade);
         TextView txt1 = (TextView)findViewById(R.id.txt1);
         cnt=this;
         AdView mAdView = (AdView) findViewById(R.id.adView);
@@ -104,6 +105,13 @@ public class MainActivity extends AppCompatActivity
                 });
                 builder.show();
                 AlertDialog dialog = builder.create();
+            }
+        });
+        text2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,tradeSession.class);
+                startActivity(intent);
             }
         });
 

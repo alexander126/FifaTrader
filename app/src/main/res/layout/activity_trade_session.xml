@@ -25,16 +25,18 @@
         android:text="@string/tax"
         android:textColor="#ffffff"
         android:layout_below="@+id/profit"/>
-    <Button
-        android:text="Start session"
+    <ImageButton
+        android:src="@drawable/addentry"
+        android:background="@null"
         android:id="@+id/activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"/>
-    <Button
+    <ImageButton
         android:id="@+id/endSession"
-        android:text="End session"
+        android:background="@null"
+        android:src="@drawable/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

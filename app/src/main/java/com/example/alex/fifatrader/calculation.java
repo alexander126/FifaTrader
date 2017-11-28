@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import static android.widget.Toast.LENGTH_LONG;
-
 public class calculation extends Activity {
     double finalProfit = 0;
     double finalTax = 0;
@@ -25,8 +23,6 @@ public class calculation extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_calculation);
-        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        this.setFinishOnTouchOutside(false);
 
         final EditText name =(EditText) findViewById(R.id.name);
 
@@ -71,10 +67,14 @@ public class calculation extends Activity {
 
                         String profitstring = prefs.getString("finalProfit", null);
                         String taxstring = prefs.getString("finalTax",null);
+                        String currentprofit = Double.toString(profit);
+                        String currenttax = Double.toString(temp);
 
                         Intent intent = new Intent(calculation.this, tradeSession.class);
                         intent.putExtra("profit", profitstring);
                         intent.putExtra("tax", taxstring);
+                        intent.putExtra("cprofit", currentprofit);
+                        intent.putExtra("ctax", currenttax);
 
                         startActivity(intent);
 
