@@ -21,7 +21,9 @@ public class aboutActivity extends AppCompatActivity {
                 .setImage(R.drawable.adsoft)
                 .setDescription("Fifa Trader application developed by ADev Software")
                 .addGroup("Contact us")
-                .addEmail("aboutadgroup@gmail.com")
+                .addGroup("aboutadgroup@gmail.com")
+                .addGroup("Partner")
+                .addWebsite("https://www.mulefactory.com/","Mulefactory")
                 .create();
 
         setContentView(aboutPage);
