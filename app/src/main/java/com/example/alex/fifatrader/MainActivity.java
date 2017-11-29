@@ -22,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdListener;
@@ -48,9 +49,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         int theme = android.R.style.Theme_Holo_Light_Dialog;
         final EditText input = new EditText(this);
-        Button text1 = (Button) findViewById(R.id.newtrade);
-        Button bn1 = (Button) findViewById(R.id.next);
-        Button text2 = (Button) findViewById(R.id.trade);
+        ImageButton newSession = (ImageButton) findViewById(R.id.newtrade);
+        ImageButton resumeSession = (ImageButton) findViewById(R.id.next);
+        ImageButton calculator = (ImageButton) findViewById(R.id.trade);
         TextView txt1 = (TextView)findViewById(R.id.txt1);
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
@@ -80,14 +81,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             builder.show();
         }
 
-        bn1.setOnClickListener(new View.OnClickListener() {
+        calculator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent calc_activity = new Intent(MainActivity.this, calculator.class);
                 MainActivity.this.startActivity(calc_activity);
             }
         });
-        text1.setOnClickListener(new View.OnClickListener(){
+        newSession.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
               final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 AlertDialog dialog = builder.create();
             }
         });
-        text2.setOnClickListener(new View.OnClickListener() {
+        resumeSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,tradeSession.class);
@@ -152,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //test for sharedprefs
         String yourmoney = prefs.getString("mymoney", "");
-        txt1.setText("You have " + prefs.getString("mymoney","0"));
+        txt1.setText("CURRENT FIFA COINS: " + prefs.getString("mymoney","0"));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
