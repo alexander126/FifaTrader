@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/fifa_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alex.fifatrader.cheapFifaCoins">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFF"
+        android:padding="10dp"
+        android:textSize="7pt"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="@string/ad"/>
+
+    <TextView
+        android:textSize="10pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/message"
+        android:id="@+id/hyperlink"/>
+
+    <TextView
+        android:id="@+id/discount2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+       android:layout_above="@+id/discount"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="15pt"
+        android:text="@string/discount2"/>
+    <TextView
+        android:id="@+id/discount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="#FFFFFF"
+        android:text="@string/discount"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="25pt"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hint"
+        android:layout_below="@+id/discount"
+        android:textColor="#FFF"
+        android:text="Hint: The discount code is reusable"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        />
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="5dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-8629737007792498/3768555595">
+    </com.google.android.gms.ads.AdView>
+
+
+</RelativeLayout>

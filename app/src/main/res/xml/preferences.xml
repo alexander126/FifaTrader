@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Personalization"/>
+    <Preference
+        android:key="key2"
+        android:title="Change name"
+        android:summary="Change your name" />
+
+    <PreferenceCategory
+        android:title="Rate the app" />
+    <Preference
+        android:key="key4"
+        android:title="Rate the application"
+        android:summary="We`d appreciate it if you give us your feedback."
+        />
+
+</PreferenceScreen>

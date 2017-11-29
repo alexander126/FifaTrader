@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.view.ContextThemeWrapper;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,36 +23,41 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
 
 import static com.example.alex.fifatrader.R.layout.activity_calculator;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-    private Context cnt;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private Context cnt = this;
     public double END = 0;
+    private InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-8629737007792498/1504697791");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
         int theme = android.R.style.Theme_Holo_Light_Dialog;
         final EditText input = new EditText(this);
         Button text1 = (Button) findViewById(R.id.newtrade);
         Button bn1 = (Button) findViewById(R.id.next);
         Button text2 = (Button) findViewById(R.id.trade);
         TextView txt1 = (TextView)findViewById(R.id.txt1);
-        cnt=this;
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
-        MobileAds.initialize(this, "ca-app-pub-8629737007792498/5456771314");
+        MobileAds.initialize(this, "ca-app-pub-8629737007792498/3768555595");
         final SharedPreferences.Editor editor = getSharedPreferences("name", MODE_PRIVATE).edit();
         SharedPreferences prefs = getSharedPreferences("name", MODE_PRIVATE);
         if(isFirstTime()){
@@ -114,6 +120,35 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                // Code to be executed when an ad request fails.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when the ad is displayed.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                Intent intent = new Intent(MainActivity.this,TaxExplained.class);
+                startActivity(intent);
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                // Code to be executed when when the interstitial ad is closed.
+            }
+        });
 
         //test for sharedprefs
         String yourmoney = prefs.getString("mymoney", "");
@@ -123,8 +158,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, cheapFifaCoins.class);
+                startActivity(intent);
             }
         });
 
@@ -148,6 +183,7 @@ public class MainActivity extends AppCompatActivity
         }
         return !ranBefore;
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -158,27 +194,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -194,7 +209,23 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.taxeplain){
-            Intent intent = new Intent(MainActivity.this,TaxExplained.class);
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            } else {
+                Log.d("TAG", "The interstitial wasn't loaded yet.");
+            }
+        } else if (id == R.id.fifacoins)
+        {
+            Intent intent = new Intent(MainActivity.this, cheapFifaCoins.class);
+            startActivity(intent);
+        } else if(id == R.id.about)
+        {
+            Intent intent = new Intent(MainActivity.this, aboutActivity.class);
+            startActivity(intent);
+        } else if(id == R.id.settings)
+        {
+            Intent intent = new Intent(MainActivity.this,
+                    settings.class);
             startActivity(intent);
         }
 
@@ -202,4 +233,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

@@ -14,6 +14,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 public class calculation extends Activity {
     double finalProfit = 0;
     double finalTax = 0;
@@ -22,8 +26,13 @@ public class calculation extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_calculation);
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mAdView.loadAd(adRequest);
+        MobileAds.initialize(this, "ca-app-pub-8629737007792498/3768555595");
         final EditText name =(EditText) findViewById(R.id.name);
         final EditText buyingPrice = (EditText) findViewById(R.id.bought);
         final EditText sellingPrice = (EditText) findViewById(R.id.sold);
