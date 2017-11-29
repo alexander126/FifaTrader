@@ -5,15 +5,22 @@
         android:title="Personalization"/>
     <Preference
         android:key="key2"
-        android:title="Change name"
-        android:summary="Change your name" />
+        android:title="Change coins amount"
+        android:summary="Changes in your coins amount? No problem add your changes here" />
 
     <PreferenceCategory
-        android:title="Rate the app" />
+        android:title="Rate Us" />
     <Preference
         android:key="key4"
-        android:title="Rate the application"
-        android:summary="We`d appreciate it if you give us your feedback."
+        android:title="Rate Fifa trader"
+        android:summary="Feedback will be highly appreciated!"
+        />
+    <PreferenceCategory
+        android:title="About" />
+    <Preference
+        android:key="key3"
+        android:title="About us"
+        android:summary="Brief information about us!"
         />
 
 </PreferenceScreen>
