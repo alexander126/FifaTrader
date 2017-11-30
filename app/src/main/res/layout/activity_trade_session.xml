@@ -11,14 +11,16 @@
     android:layout_height="match_parent">
     <TextView
         android:id="@+id/footballName"
+        android:textSize="10pt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/currentTax"
-        android:text="Name"
+        android:text="Last item sold"
         android:textColor="#FFFFFF"/>
     <TextView
         android:id="@+id/profit"
+        android:textSize="10pt"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
@@ -28,28 +30,38 @@
         android:layout_below="@+id/tax"/>
     <TextView
         android:id="@+id/currentTax"
+        android:textSize="10pt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/currentProfit"
         android:layout_centerHorizontal="true"
-        android:text="currentTax"
+        android:text="Last trade tax :"
         android:textColor="#FFFFFF"/>
     <TextView
         android:id="@+id/currentProfit"
+        android:textSize="10pt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:text="currentProfit"
+        android:text="Last trade profit :"
         android:textColor="#FFFFFF"/>
     <TextView
         android:id="@+id/tax"
+        android:textSize="10pt"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tax"
         android:textColor="#ffffff"
         android:layout_below="@+id/currentProfit"/>
+    <TextView
+        android:id="@+id/tax2"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_below="@+id/profit"/>
     <ImageButton
         android:id="@+id/activity"
         android:layout_width="wrap_content"
@@ -62,11 +74,43 @@
         android:maxWidth="100dp"
         android:adjustViewBounds="true"
         android:background="@null"/>
+    <ImageView
+        android:id="@+id/coins1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/profit"
+        android:layout_alignParentBottom="@+id/profit"
+        android:layout_below="@id/tax"
+        android:layout_above="@id/tax2"
+        android:src="@drawable/fifacoins"/>
+    <ImageView
+        android:id="@+id/coins2"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@id/currentTax"
+        android:layout_below="@id/footballName"
+        android:layout_above="@id/currentProfit"
+        android:src="@drawable/fifacoins"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/coins3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/currentProfit"
+        android:layout_above="@id/tax"
+        android:layout_below="@id/currentTax"
+        android:src="@drawable/fifacoins"/>
+    <ImageView
+        android:id="@+id/coins4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tax"
+        android:layout_below="@+id/currentProfit"
+        android:layout_above="@+id/profit"
+        android:src="@drawable/fifacoins"/>
     <ImageButton
         android:id="@+id/endSession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_alignParentEnd="true"
         android:src="@drawable/endsession"
         android:layout_above="@+id/adView"

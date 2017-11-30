@@ -3,8 +3,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="profit">Profit</string>
-    <string name="tax">Tax</string>
+    <string name="profit">Total Profit</string>
+    <string name="tax">Total Tax</string>
     <string name="action_settings">Settings</string>
     <string name="fname"></string>
     <string name="title_activity_cheap_fifa_coins">Cheap Fifa Coins</string>

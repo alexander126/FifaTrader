@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ public class calculation extends Activity {
         final EditText name =(EditText) findViewById(R.id.name);
         final EditText buyingPrice = (EditText) findViewById(R.id.bought);
         final EditText sellingPrice = (EditText) findViewById(R.id.sold);
-        Button confirm = (Button) findViewById(R.id.confirm);
+        ImageButton confirm = (ImageButton) findViewById(R.id.confirm);
         final SharedPreferences prefs = getSharedPreferences("name", MODE_PRIVATE);
         final SharedPreferences.Editor editor = getSharedPreferences("name", MODE_PRIVATE).edit();
 

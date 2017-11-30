@@ -52,12 +52,12 @@ public class tradeSession extends AppCompatActivity {
         ImageButton activity = (ImageButton) findViewById(R.id.activity);
         ImageButton endSession = (ImageButton) findViewById(R.id.endSession);
 
-        name.setText("Your last traded item is: " + prefs.getString("footballName", "-"));
-        currentTax.setText("Your last trade tax is: " + prefs.getString("tax", "0"));
-        currentProfit.setText("Your last trade profit is: " + prefs.getString("profit", "0"));
+        name.setText("Last item sold: " + prefs.getString("footballName", "-"));
+        currentTax.setText("Last trade tax : " + prefs.getString("tax", "0"));
+        currentProfit.setText("Last trade profit : " + prefs.getString("profit", "0"));
 
-        tax.setText("Your session tax is: " + prefs.getString("finalTax","0"));
-        profit.setText("Your session profit is: " + prefs.getString("finalProfit","0"));
+        tax.setText("Total tax: " + prefs.getString("finalTax","0"));
+        profit.setText("Total profit: " + prefs.getString("finalProfit","0"));
 
         activity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,9 +72,9 @@ public class tradeSession extends AppCompatActivity {
             public void onClick(View v) {
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(tradeSession.this);
-                builder.setMessage("In the current session you have made " + prefs.getString("finalProfit","0")
-                        + "and you have paid "+ prefs.getString("finalTax","0") + " in tax." +
-                        "Do you want to end this session?")
+                builder.setMessage("Profit made in the current sesion is " + prefs.getString("finalProfit","0")
+                        + " coins. The total amount of tax paid is "+ prefs.getString("finalTax","0") + " coins." +
+                        " Do you want to end this session?")
                         .setTitle("End session");
                 builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
@@ -123,8 +123,19 @@ public class tradeSession extends AppCompatActivity {
             @Override
             public void onAdLeftApplication() {
                 // Code to be executed when the user has left the app.
+                double end = 0;
+                double newProfit = Double.parseDouble(prefs.getString("mymoney",null))+Double.parseDouble(prefs.getString("finalProfit",null));
+                editor.putString("finalProfit",Double.toString(END));
+                editor.putString("finalTax",Double.toString(END));
+                editor.putString("footballName","-");
+                editor.putString("tax", Double.toString(END));
+                editor.putString("profit",Double.toString(END));
+                editor.putString("mymoney", Double.toString(newProfit));
+                editor.commit();
+                Intent intent = new Intent(tradeSession.this, MainActivity.class);
+                startActivity(intent);
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
             }
-
             @Override
             public void onAdClosed() {
                 double end = 0;

@@ -20,7 +20,7 @@ public class cheapFifaCoins extends AppCompatActivity {
         TextView textView =(TextView)findViewById(R.id.hyperlink);
         textView.setClickable(true);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
-        String text = "<a href='https://www.mulefactory.com/buy_fifa_17_coins/?ref=198717&campaign=25200'> Click here! </a>";
+        String text = "<a href='https://www.mulefactory.com/buy_fifa_17_coins/?ref=198717&campaign=25200'> CLICK HERE! </a>";
         textView.setText(Html.fromHtml(text));
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
