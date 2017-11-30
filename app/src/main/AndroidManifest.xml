@@ -19,16 +19,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".calculator" />
+        <activity android:name=".calculator"
+            android:parentActivityName="com.example.alex.fifatrader.MainActivity" />
         <activity
             android:name=".TaxExplained"
             android:excludeFromRecents="true"
             android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity android:name=".tradeSession" />
+        <activity android:name=".tradeSession"
+            android:parentActivityName="com.example.alex.fifatrader.MainActivity"/>
         <activity android:name=".calculation" />
-        <activity android:name=".cheapFifaCoins" />
-        <activity android:name=".aboutActivity" />
-        <activity android:name=".settings"></activity>
+        <activity android:name=".cheapFifaCoins"
+            android:parentActivityName="com.example.alex.fifatrader.MainActivity"/>
+        <activity android:name=".aboutActivity"
+            android:parentActivityName="com.example.alex.fifatrader.MainActivity"/>
+        <activity android:name=".settings"
+            android:parentActivityName="com.example.alex.fifatrader.MainActivity"></activity>
     </application>
 
 </manifest>

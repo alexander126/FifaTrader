@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="20dp"
         android:textColor="#FFFFFF"/>
@@ -23,10 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/txt1"
         android:layout_centerHorizontal="true"
-        android:maxHeight="40dp"
-        android:maxWidth="80dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/fifacoins"/>
+        android:src="@drawable/icon"/>
     <TextView
         android:id="@+id/center"
         android:layout_width="wrap_content"

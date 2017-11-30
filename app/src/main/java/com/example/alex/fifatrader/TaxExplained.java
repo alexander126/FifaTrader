@@ -21,9 +21,9 @@ public class TaxExplained extends AppCompatActivity {
         this.setFinishOnTouchOutside(true);
 
         TextView text = (TextView) findViewById(R.id.info);
-        text.setText("In order to control the rapid rate at which some huge Ultimate Team traders/coin sellers seem to accumulate coins, EA has implemented a tax structure in FIFA 13 Ultimate Team.\n" +
+        text.setText("Ea wants to control the rapid rate at which some huge Ultimate Team traders/coin sellers seem to accumulate coins, that's why they have implemented a tax structure in FIFA Ultimate Team.\n" +
                 " \n" +
-                "Some players suspect that it's just another way to stimulate more pack sales. 5% isn't a lot,You probably won't really even notice the taxes, unless you are a coin seller yourself.But it is important to be aware of Ultimate Team taxes for when you are involved in more significant trading numbers.\n" +
+                "Most of the players think that it's a way of stimulating people to buy more packs. 5% isn't a lot,Some of you won't even notice the tax, but big coins sellers do.It is important to be aware of Ultimate Team taxes for when you are involved in more significant trading numbers.\n" +
                 " \n" +
                 "EA takes 5% for any player-to-player trade. This includes cards of any kind, just anything you're selling or buying on the trade market. The taxes are deducted from the final sale price that is given to the seller. Theoretically, the seller gets taxed.");
     }
