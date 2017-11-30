@@ -19,7 +19,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 import org.w3c.dom.Text;
 
@@ -34,6 +36,12 @@ public class tradeSession extends AppCompatActivity {
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-8629737007792498/1504697791");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mAdView.loadAd(adRequest);
+        MobileAds.initialize(this, "ca-app-pub-8629737007792498/3768555595");
         final SharedPreferences.Editor editor = getSharedPreferences("name", MODE_PRIVATE).edit();
         final SharedPreferences prefs = getSharedPreferences("name", MODE_PRIVATE);
         TextView name = (TextView) findViewById(R.id.footballName);
