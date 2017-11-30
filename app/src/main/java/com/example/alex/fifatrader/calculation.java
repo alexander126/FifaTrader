@@ -21,7 +21,7 @@ import com.google.android.gms.ads.MobileAds;
 public class calculation extends Activity {
     double finalProfit = 0;
     double finalTax = 0;
-    String footballer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,8 @@ public class calculation extends Activity {
                         double selling = Double.parseDouble(sellingPrice.getText().toString());
                         double temp = selling * 5 / 100;
                         double profit = (selling - temp) - price;
-                        footballer = name.getText().toString();
+                        String footballer = name.getText().toString();
+                        editor.putString("footballName", footballer);
                         editor.putString("profit", Double.toString(profit));
                         editor.putString("tax", Double.toString(temp));
                         editor.commit();

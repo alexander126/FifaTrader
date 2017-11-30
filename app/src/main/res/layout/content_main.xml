@@ -32,34 +32,41 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/adView"
         android:layout_centerHorizontal="true"/>
-    <ImageButton
-        android:id="@+id/trade"
-        android:layout_toLeftOf="@+id/center"
-        android:layout_width="wrap_content"
-        android:layout_above="@id/adView"
+    <LinearLayout
+        android:id="@+id/linearButtons"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/resumesession"
-        android:layout_marginBottom="25dp"
-        android:scaleType="fitCenter"
-        android:maxHeight="100dp"
-        android:layout_marginRight="50dp"
-        android:maxWidth="100dp"
-        android:adjustViewBounds="true"
-        android:background="@null"/>
-    <ImageButton
-        android:id="@+id/newtrade"
-        android:layout_toRightOf="@+id/center"
-        android:layout_above="@id/adView"
-        android:layout_marginBottom="25dp"
-        android:layout_marginLeft="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/newsession"
-        android:scaleType="fitCenter"
-        android:maxHeight="100dp"
-        android:maxWidth="100dp"
-        android:adjustViewBounds="true"
-        android:background="@null"/>
+        android:layout_above="@+id/adView"
+        android:layout_marginBottom="20dp"
+        >
+        <ImageButton
+            android:id="@+id/trade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/resumesession"
+            android:scaleType="fitCenter"
+            android:maxHeight="100dp"
+            android:adjustViewBounds="true"
+            android:background="@null"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </TextView>
+        <ImageButton
+            android:id="@+id/newtrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/newsession"
+            android:scaleType="fitCenter"
+            android:maxHeight="100dp"
+            android:adjustViewBounds="true"
+            android:background="@null"
+
+            />
+    </LinearLayout>
+
     <ImageButton
         android:id="@+id/next"
         android:layout_width="wrap_content"

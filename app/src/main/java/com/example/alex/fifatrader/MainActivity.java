@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             builder.setTitle("Enter your current money");
 
         //set up the input
-            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
             builder.setView(input);
 
             //set up the buttons
@@ -91,10 +91,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v){
               final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
                 builder.setTitle("Create new session");
                 builder.setMessage("Are you sure you want to end this session?" +
                                     "If you have session running it will be gone!");
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent(MainActivity.this,tradeSession.class);

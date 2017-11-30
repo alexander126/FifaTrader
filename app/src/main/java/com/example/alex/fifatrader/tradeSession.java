@@ -21,8 +21,10 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
-public class tradeSession extends AppCompatActivity {
+import org.w3c.dom.Text;
 
+public class tradeSession extends AppCompatActivity {
+    public double END = 0;
     private InterstitialAd mInterstitialAd;
     //ee
     @Override
@@ -34,14 +36,20 @@ public class tradeSession extends AppCompatActivity {
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         final SharedPreferences.Editor editor = getSharedPreferences("name", MODE_PRIVATE).edit();
         final SharedPreferences prefs = getSharedPreferences("name", MODE_PRIVATE);
+        TextView name = (TextView) findViewById(R.id.footballName);
         TextView tax = (TextView) findViewById(R.id.tax);
         TextView profit = (TextView) findViewById(R.id.profit);
+        TextView currentTax = (TextView) findViewById(R.id.currentTax);
+        TextView currentProfit = (TextView) findViewById(R.id.currentProfit);
         ImageButton activity = (ImageButton) findViewById(R.id.activity);
         ImageButton endSession = (ImageButton) findViewById(R.id.endSession);
 
+        name.setText("Your last traded item is: " + prefs.getString("footballName", "-"));
+        currentTax.setText("Your last trade tax is: " + prefs.getString("tax", "0"));
+        currentProfit.setText("Your last trade profit is: " + prefs.getString("profit", "0"));
 
-       tax.setText("Your session tax is: " + prefs.getString("finalTax","0"));
-       profit.setText("Your session profit is: " + prefs.getString("finalProfit","0"));
+        tax.setText("Your session tax is: " + prefs.getString("finalTax","0"));
+        profit.setText("Your session profit is: " + prefs.getString("finalProfit","0"));
 
         activity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,8 +121,11 @@ public class tradeSession extends AppCompatActivity {
             public void onAdClosed() {
                 double end = 0;
                 double newProfit = Double.parseDouble(prefs.getString("mymoney",null))+Double.parseDouble(prefs.getString("finalProfit",null));
-                editor.putString("finalProfit",Double.toString(end));
-                editor.putString("finalTax",Double.toString(end));
+                editor.putString("finalProfit",Double.toString(END));
+                editor.putString("finalTax",Double.toString(END));
+                editor.putString("footballName","-");
+                editor.putString("tax", Double.toString(END));
+                editor.putString("profit",Double.toString(END));
                 editor.putString("mymoney", Double.toString(newProfit));
                 editor.commit();
                 Intent intent = new Intent(tradeSession.this, MainActivity.class);

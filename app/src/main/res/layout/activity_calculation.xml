@@ -41,7 +41,8 @@
         android:gravity="center_horizontal"
         android:layout_below="@id/name"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:inputType="number"/>
     <EditText
         android:background="@android:color/transparent"
         android:id="@+id/sold"
@@ -50,7 +51,8 @@
         android:layout_below="@id/bought"
         android:hint="Sold for"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:inputType="number"/>
 
     <Button
         android:id="@+id/confirm"
