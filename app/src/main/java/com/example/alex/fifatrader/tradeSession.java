@@ -59,6 +59,8 @@ public class tradeSession extends AppCompatActivity {
         tax.setText("Total tax: " + prefs.getString("finalTax","0"));
         profit.setText("Total profit: " + prefs.getString("finalProfit","0"));
 
+        final String test1 = prefs.getString("finalTax", "0");
+        final String test2 = prefs.getString("finalProfit","0");
         activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,32 +72,35 @@ public class tradeSession extends AppCompatActivity {
         endSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (test1.equals("0.0") || (test2.equals("0.0"))) {
+                    Toast.makeText(tradeSession.this, "Can't finish an empty session!", Toast.LENGTH_SHORT).show();
+                } else {
 
-                final AlertDialog.Builder builder = new AlertDialog.Builder(tradeSession.this);
-                builder.setMessage("Profit made in the current sesion is " + prefs.getString("finalProfit","0")
-                        + " coins. The total amount of tax paid is "+ prefs.getString("finalTax","0") + " coins." +
-                        " Do you want to end this session?")
-                        .setTitle("End session");
-                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        builder.setCancelable(true);
-                    }
-                });
-                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (mInterstitialAd.isLoaded()) {
-                            mInterstitialAd.show();
-                        } else {
-                            Log.d("TAG", "The interstitial wasn't loaded yet.");
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(tradeSession.this);
+                    builder.setMessage("Total profit in the current sesion is " + prefs.getString("finalProfit", "0")
+                            + " coins. The total amount of tax paid is " + prefs.getString("finalTax", "0") + " coins." +
+                            " Do you want to end this session?")
+                            .setTitle("End session");
+                    builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            builder.setCancelable(true);
                         }
-                    }
-                });
+                    });
+                    builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (mInterstitialAd.isLoaded()) {
+                                mInterstitialAd.show();
+                            } else {
+                                Log.d("TAG", "The interstitial wasn't loaded yet.");
+                            }
+                        }
+                    });
 
-                builder.show();
-            }
-        });
+                    builder.show();
+                }
+            }});
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
@@ -123,18 +128,6 @@ public class tradeSession extends AppCompatActivity {
             @Override
             public void onAdLeftApplication() {
                 // Code to be executed when the user has left the app.
-                double end = 0;
-                double newProfit = Double.parseDouble(prefs.getString("mymoney",null))+Double.parseDouble(prefs.getString("finalProfit",null));
-                editor.putString("finalProfit",Double.toString(END));
-                editor.putString("finalTax",Double.toString(END));
-                editor.putString("footballName","-");
-                editor.putString("tax", Double.toString(END));
-                editor.putString("profit",Double.toString(END));
-                editor.putString("mymoney", Double.toString(newProfit));
-                editor.commit();
-                Intent intent = new Intent(tradeSession.this, MainActivity.class);
-                startActivity(intent);
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
             }
             @Override
             public void onAdClosed() {
