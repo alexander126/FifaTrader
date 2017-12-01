@@ -72,7 +72,7 @@ public class tradeSession extends AppCompatActivity {
         endSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (test1.equals("0.0") || (test2.equals("0.0"))) {
+                if (test1.equals("0.0") || test1.equals("0") || (test2.equals("0.0")) || test2.equals("0")) {
                     Toast.makeText(tradeSession.this, "Can't finish an empty session!", Toast.LENGTH_SHORT).show();
                 } else {
 

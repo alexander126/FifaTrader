@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(isFirstTime()){
             ContextThemeWrapper wrapper = new ContextThemeWrapper(cnt,theme);
             AlertDialog.Builder builder = new AlertDialog.Builder(wrapper);
+            final Intent intent = new Intent(this,MainActivity.class);
             builder.setTitle("Enter your current money");
 
         //set up the input
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 public void onClick(DialogInterface dialog, int which) {
                     editor.putString("mymoney", input.getText().toString());
                     editor.commit();
+                    startActivity(intent);
                 }
             });
             builder.show();
@@ -152,7 +154,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         //test for sharedprefs
-        String yourmoney = prefs.getString("mymoney", "");
         txt1.setText("CURRENT FIFA COINS: " + prefs.getString("mymoney","0"));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
